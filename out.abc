@@ -1,0 +1,23 @@
+%%abc-charset utf-8
+%%titlefont NewCenturySchlbk-Roman 22
+%%subtitlefont NewCenturySchlbk 16
+%%composerfont NewCenturySchlbk-Italic 14
+%%footerfont NewCenturySchlbk 16
+%%headerfont NewCenturySchlbk 16
+%%tempofont NewCenturySchlbk-Bold 15
+X:1
+T:Markovtest
+C:strauss (localhost)
+L:1/8
+M:4/4
+R:walz
+Q: "Vivace" 1/4 = 40
+V:1
+K:C
+%%MIDI channel 1
+%%MIDI program 1 22
+%%MIDI chordprog 0
+%%MIDI chordvol 40
+%%MIDI drum ddd 60 61 61 50 40 40
+%%MIDI drumon
+| g2d2f2a2 | f2b2f2e2 | e2a2A2E2 | A2a2f2b2 | b2b2B2G2 |
