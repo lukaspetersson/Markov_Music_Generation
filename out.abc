@@ -11,7 +11,7 @@ C:strauss (localhost)
 L:1/8
 M:4/4
 R:walz
-Q: "Vivace" 1/4 = 40
+Q: "Vivace" 1/4 = 30
 V:1
 K:C
 %%MIDI channel 1
@@ -20,4 +20,4 @@ K:C
 %%MIDI chordvol 40
 %%MIDI drum ddd 60 61 61 50 40 40
 %%MIDI drumon
-| g2d2f2a2 | f2b2f2e2 | e2a2A2E2 | A2a2f2b2 | b2b2B2G2 |
+|"Em"G2b2g2g2 |"G"e2d2b2D2 |"C"b2g2G2C2 |"Em"G2E2G2E2 |"C"e2C2e2c2 |"G"E2g2d2D2 |"Dm"b2D2f2D2 |"C"f2G2g2G2 |"Dm"c2a2A2a2 |"Am"D2E2c2E2 |"Dm"A2D2F2a2 |"Em"F2G2B2E2 |"C"E2E2C2E2 |"G"C2B2D2D2 |"Dm"G2D2a2F2 |

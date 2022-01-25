@@ -10,13 +10,14 @@ def next(now, M):
     return j
 
 notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'c', 'd', 'e', 'f', 'g', 'a', 'b']
-Nnotes = len(notes)
-startnote = 3
+chords = ['Am','C', 'Dm', 'Em', 'F', 'G'] 
 
-Nbars = 5
+Nbars = 15
+
+s = 1/6
 
 #markov for notes
-M = np.array([[0.1, 0.1, 0.2, 0.1, 0.3, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+N = np.array([[0.1, 0.1, 0.2, 0.1, 0.3, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
               [0.0, 0.1, 0.1, 0.1, 0.3, 0.3, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0, 0.0],
               [0.1, 0.0, 0.1, 0.1, 0.0, 0.3, 0.3, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.0],
               [0.0, 0.1, 0.1, 0.2, 0.0, 0.1, 0.4, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0],
@@ -30,6 +31,20 @@ M = np.array([[0.1, 0.1, 0.2, 0.1, 0.3, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 
               [0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.1, 0.2, 0.2, 0.0, 0.2, 0.1, 0.1],
               [0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.2, 0.2, 0.1, 0.1, 0.2, 0.1],
               [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.1, 0.4, 0.1, 0.1, 0.1]])
+
+NC = np.array([[s,0,s,0,0,s,0,s,0,s,0,0,s,0],
+               [s,0,s,0,s,0,0,s,0,s,0,s,0,0],
+               [0,s,0,s,0,s,0,0,s,0,s,0,s,0],
+               [0,0,s,0,s,0,s,0,0,s,0,s,0,s],
+               [s,0,0,s,0,s,0,s,0,0,s,0,s,0],
+               [0,s,0,0,s,0,s,0,s,0,0,s,0,s]])
+
+C = np.array([[s, s, s, s, s, s],
+              [s, s, s, s, s, s],
+              [s, s, s, s, s, s],
+              [s, s, s, s, s, s],
+              [s, s, s, s, s, s],
+              [s, s, s, s, s, s]])
 
 #template for possible bars
 #bars = [['(', '*', '3', ' ', '*', ')', '*', '*'],
@@ -59,7 +74,7 @@ f.write('L:1/8\n')
 f.write('M:4/4\n')
 f.write('R:walz\n')
 # 180=presto, 160=vivace, 132=allegro, 96=moderato, 72=andante
-f.write('Q: "Vivace" 1/4 = 40\n')
+f.write('Q: "Vivace" 1/4 = 30\n')
 f.write('V:1\n')
 f.write('K:C\n')
 f.write('%%MIDI channel 1\n')
@@ -75,17 +90,20 @@ bar = ['*', '2','*', '2','*', '2','*', '2']
 tune = ''
 
 k = 0
-note = next(np.random.randint(0, len(notes)), M)
+note = next(np.random.randint(0, len(chords)), NC)
+chord = next(np.random.randint(0, len(chords)), C)
 
 while k < Nbars:
     n = len(bar)
-    newbar = '| '
+    newbar = '|'+'"'+chords[chord]+'"'
     for j in range(0, n):
         if bar[j] != '*':
             newbar = newbar + bar[j]
         else:
-            newbar = newbar + notes[note]
-            note = next(note, M)
+            newbar = newbar + notes[note] 
+            note = next(chord, NC)
+
+    chord = next(chord, C)
 
     newbar = newbar + ' '
     tune = tune + newbar
