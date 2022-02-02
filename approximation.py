@@ -32,9 +32,11 @@ for i in range(1, 13):
     ind = res.index(m)
     frac = continued_fraction(res[0:ind + 1])
     error_percent = ((num / frac) - 1) * 100
+    numerator, denominator = frac.as_integer_ratio()
 
     print(f"Coefficents: {res}")
     print(f"Biggest coefficient: {m}")
     print(f"Input number: {num}")
     print(f"Approximation: {frac}")
+    print(f"Approximation fraction: {numerator} / {denominator}")
     print(f"Error percentage: {error_percent}")
