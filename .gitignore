@@ -1,3 +1,6 @@
 *.abc
 *.mid
-'.swp
+*.swp
+*.py~
+*.un~
+
