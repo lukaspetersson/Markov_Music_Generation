@@ -90,11 +90,11 @@ def get_weight(l):
     return (l[6])
 
 matrix = []
-for i in range(12):
-    temp_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    for j in range (12):
-        weight = get_weight(res_list[j])
-        temp_list[(i+j) % 12] = weight
+for i in range(24):
+    temp_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for j in range (24):
+        weight = get_weight(res_list[j % 12])
+        temp_list[(i+j) % 24] = weight
     matrix.append(temp_list)
 
 
