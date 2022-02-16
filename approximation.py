@@ -1,5 +1,4 @@
 import math
-from typing import Tuple
 
 def approximate(irrational_number: float) -> list[float]:
     coefficients = []
@@ -84,7 +83,22 @@ for i in range(len(res_list)):
 #print(l)
 
 # sortera efter storlek på nämnare
-res_list.sort(key= lambda x: x[8])
+res_list.append([2, 2, 1, 2, 2, 0, 12, 2, 1])
+res_list.sort(key= lambda x: x[6])
 
-#for l in res_list:
-#    print(l)
+def get_weight(l):
+    return (l[6])
+
+matrix = []
+for i in range(12):
+    temp_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for j in range (12):
+        weight = get_weight(res_list[j])
+        temp_list[(i+j) % 12] = weight
+    matrix.append(temp_list)
+
+
+
+
+for l in matrix:
+    print(l)
