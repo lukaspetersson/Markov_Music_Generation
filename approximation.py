@@ -98,7 +98,9 @@ for i in range(12):
     matrix.append(temp_list)
 
 
-
+with open("matrix.txt", "w") as f:
+    for l in matrix:
+        f.write("[" + ", ".join(str(e) for e in l) + "]" + "\n")
 
 for l in matrix:
     print(l)
