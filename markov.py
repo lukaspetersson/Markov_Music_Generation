@@ -68,6 +68,13 @@ C = np.array([
                 [p,0,p,0,p,p,0,p,0,p,p,0,p,0,p,0,p,p,0,p,0,p,p,0]
             ])
 
+D = np.zeros([24,24])
+for i in range(24):
+    for j in range(24):
+        D[i][j] = 1/(abs(i-j)+1.4)
+    s = np.sum(D[i])
+    D[i] /= s
+
 
 #NNC = np.multiply(N, NC)
 #for row in NNC:
@@ -122,16 +129,16 @@ f.write('%%MIDI drumon\n')
 
 def next(note, chord):
     #element wise multiply and normalize
-    M = np.multiply(N[note],C[chord])
+    M = np.multiply(np.multiply(N[note],D[note]),C[chord])
     s = np.sum(M)
     M /= s
 
     r = np.random.rand()
     j = -1
-    sum = 0
-    while sum < r:
+    s = 0
+    while s < r:
         j = j + 1
-        sum = sum + M[j]
+        s = s + M[j]
     return j
 
 bar = ['*', '2','*', '2','*', '2','*', '2']
