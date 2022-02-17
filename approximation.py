@@ -87,16 +87,18 @@ res_list.append([2, 2, 1, 2, 2, 0.01, 12, 2, 1])
 res_list.sort(key= lambda x: x[6])
 
 def get_weight(l):
-    return (1/abs(l[5]))**(1/2)
+    #return (1/abs(l[5]))**(1/2)
+    return l[6]
 
 matrix = []
 for i in range(24):
     temp_list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     for j in range (24):
         weight = get_weight(res_list[j % 12])
-        temp_list[(i+j) % 24] = weight
-    norm = [e/sum(temp_list) for e in temp_list]
-    matrix.append(norm)
+        temp_list[(i + j + 1) % 24] = weight
+    #norm = [e/sum(temp_list) for e in temp_list]
+    #matrix.append(norm)
+    matrix.append(temp_list)
 
 
 with open("matrix.txt", "w") as f:
