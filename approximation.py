@@ -1,4 +1,7 @@
 import math
+from unicodedata import name
+import numpy as np
+import matplotlib.pyplot as plt
 
 def approximate(irrational_number: float) -> list[float]:
     coefficients = []
@@ -118,3 +121,8 @@ with open("matrix.txt", "w") as f:
 
 for l in matrix:
     print(l)
+
+plt.imshow(matrix, cmap="binary")
+plt.colorbar()
+plt.savefig("matrixColormap")
+plt.show()
