@@ -6,20 +6,14 @@ chords = ['C', 'G', 'Am', 'F']
 
 Nbars = 40
 #markov for notes
-<<<<<<< HEAD
-=======
 
->>>>>>> 6f2ccecf2332fc6a19392f515a674a49bd5900f4
 N = np.ones([24,24])
 f = open("matrix.txt")
 for i, line in enumerate(f):
     for j, num in enumerate(line[1:-2].split(', ')):
         N[i][j] = float(num)
-<<<<<<< HEAD
-=======
 
->>>>>>> 6f2ccecf2332fc6a19392f515a674a49bd5900f4
-
+        
 #NC = np.array([[s,0,s,0,0,s,0,s,0,s,0,0,s,0],
 #               [s,0,s,0,s,0,0,s,0,s,0,s,0,0],
 #               [0,s,0,s,0,s,0,0,s,0,s,0,s,0],
