@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 numpy = "*"
 music21 = "*"
+matplotlib = "*"
 
 [dev-packages]
 
